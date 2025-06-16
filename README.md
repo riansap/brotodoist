@@ -1,69 +1,137 @@
-# Todoist Clone
+# Brotodoist – Modern Next.js Todo Application
 
-A modern todo list application built with Next.js, featuring authentication, real-time updates, and a beautiful UI.
+**Brotodoist** is a modern, scalable, and type-safe to-do list application built with Next.js 15.3.3, TypeScript, Firebase, and Tailwind CSS.  
+It supports full-stack features including authentication, real-time database updates, PWA support, and a clean, customizable UI.
 
-## Features
+---
 
-- 🔐 Authentication with Google (NextAuth.js)
-- 🔥 Real-time updates with Firebase
-- 🎨 Modern UI with Tailwind CSS
-- 🌙 Dark/Light mode support
-- 📱 Responsive design
-- ✨ Type-safe with TypeScript
+## Key Features
 
-## Tech Stack
+- Authentication using Google OAuth with NextAuth.js and Firebase Auth
+- Real-time data synchronization using Firestore
+- Responsive and themeable UI with Tailwind CSS and dark/light mode toggle
+- PWA ready using `next-pwa`
+- Type-safe development using TypeScript and Zod
+- Async state management using TanStack React Query v5
+- Client-side form validation and user feedback with Sonner and Radix UI
 
-- **Framework**: Next.js 15
-- **Authentication**: NextAuth.js, Firebase Auth
-- **Database**: SQLite with Prisma
-- **Styling**: Tailwind CSS
-- **State Management**: React Query
-- **Type Safety**: TypeScript
+---
+
+## Tech Stack and Libraries
+
+| Tool / Library             | Purpose                                        |
+|---------------------------|------------------------------------------------|
+| Next.js 15.3.3            | React framework with App Router and SSR        |
+| TypeScript 5              | Static typing and tooling support              |
+| Firebase (v11)            | Authentication and Firestore                   |
+| Firebase Admin (v12)      | Secure server-side operations                  |
+| NextAuth.js (v4)          | Authentication and session management          |
+| TanStack React Query v5   | Data fetching and caching                      |
+| Tailwind CSS v4           | Utility-first styling framework                |
+| Lucide React              | Icon set for consistent UI                    |
+| PWA                       | Progressive Web App ready                      |
+| Zod                       | Schema-based validation                        |
+| Next Themes               | Dark/Light mode implementation                 |
+| Radix UI                  | Accessible UI components                      |
+| Sonner                    | Lightweight toast notification system          |
+
+---
+
+## Project Requirements
+
+- Node.js v18+
+- SQLite or other supported Prisma-compatible databases
+- Firebase project setup
+- Google Cloud project for OAuth credentials
+
+---
 
 ## Getting Started
 
-1. Clone the repository
-2. Install dependencies:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/riansap/brotodoist.git
+   cd brotodoist
+   ```
+
+2. **Install dependencies**
    ```bash
    npm install
    ```
-3. Copy `.env.example` to `.env` and fill in your environment variables:
+
+3. **Configure environment variables**
    ```bash
    cp .env.example .env
    ```
-4. Set up your environment variables:
+   Fill in these required variables in `.env`:
+   - Google OAuth Client ID and Secret
+   - Firebase API keys and config
+   - NEXTAUTH_SECRET
 
-   - Get Google OAuth credentials from [Google Cloud Console](https://console.cloud.google.com)
-   - Set up a Firebase project and get your configuration
-   - Update the `.env` file with your credentials
-
-5. Run the development server:
-
+4. **Run the development server**
    ```bash
    npm run dev
    ```
 
-6. Open [http://localhost:3000](http://localhost:3000) with your browser
+5. Open the app at:  
+   [http://localhost:3000](http://localhost:3000)
 
-## Development
+---
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+## Available Scripts
 
-## Environment Variables
+| Script         | Description                        |
+|----------------|------------------------------------|
+| `npm run dev`  | Start development server with Turbopack |
+| `npm run build`| Build the project for production   |
+| `npm run start`| Start the production server        |
+| `npm run lint` | Lint code with ESLint              |
 
-See `.env.example` for all required environment variables.
+---
 
-## Contributing
+## Testing
+
+Testing is set up using **Jest** and **React Testing Library**.
+
+- Unit and integration test support
+- Custom matchers from `jest-dom`
+- `jsdom` environment for browser-like testing
+
+---
+
+## Environment Configuration
+
+Check `.env.example` for the full list of environment variables and their required values. You need:
+
+- Google OAuth credentials
+- Firebase configuration
+- A secure `NEXTAUTH_SECRET` value
+
+---
+
+## Contribution Guidelines
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add your message"
+   ```
+4. Push the branch:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
 5. Open a Pull Request
+
+---
 
 ## License
 
-This project is licensed under the MIT License.
+This project is open-source and licensed under the MIT License.
+
+---
+
+**Made with ❤️  using Next.js, Firebase, and TypeScript**  
