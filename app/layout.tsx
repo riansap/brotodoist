@@ -15,7 +15,6 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_BASE_URL || "https://brotodoist.pages.dev"
   ),
   manifest: "/manifest.json",
-  themeColor: "#000000",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black",
@@ -32,6 +31,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
