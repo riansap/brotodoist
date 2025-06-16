@@ -1,0 +1,23 @@
+{
+  "name": "Brotodoist",
+  "short_name": "Broto",
+  "description": "A simple and efficient todo list application",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/logo.webp",
+      "type": "image/webp",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/logo.webp",
+      "type": "image/webp",
+      "sizes": "512x512"
+    }
+  ]
+}

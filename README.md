@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Todoist Clone
+
+A modern todo list application built with Next.js, featuring authentication, real-time updates, and a beautiful UI.
+
+## Features
+
+- 🔐 Authentication with Google (NextAuth.js)
+- 🔥 Real-time updates with Firebase
+- 🎨 Modern UI with Tailwind CSS
+- 🌙 Dark/Light mode support
+- 📱 Responsive design
+- ✨ Type-safe with TypeScript
+
+## Tech Stack
+
+- **Framework**: Next.js 15
+- **Authentication**: NextAuth.js, Firebase Auth
+- **Database**: SQLite with Prisma
+- **Styling**: Tailwind CSS
+- **State Management**: React Query
+- **Type Safety**: TypeScript
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Copy `.env.example` to `.env` and fill in your environment variables:
+   ```bash
+   cp .env.example .env
+   ```
+4. Set up your environment variables:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   - Get Google OAuth credentials from [Google Cloud Console](https://console.cloud.google.com)
+   - Set up a Firebase project and get your configuration
+   - Update the `.env` file with your credentials
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Run the development server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+6. Open [http://localhost:3000](http://localhost:3000) with your browser
 
-## Learn More
+## Development
 
-To learn more about Next.js, take a look at the following resources:
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment Variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+See `.env.example` for all required environment variables.
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+This project is licensed under the MIT License.
