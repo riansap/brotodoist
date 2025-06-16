@@ -25,23 +25,38 @@ export default function AddTodoForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-2 mt-8">
-      <Input
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        disabled={!email || isPending}
-        placeholder="Add a new task ..."
-      />
-      <Button type="submit" disabled={!text.trim() || isPending}>
-        {isPending ? (
-          <span className="flex items-center gap-2">
-            <Loader2 className="w-4 h-4 animate-spin" />
-            Adding...
-          </span>
-        ) : (
-          "Add Task"
-        )}
-      </Button>
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-8 w-full"
+    >
+      <div className="flex-1">
+        <Input
+          className="w-full"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          disabled={!email || isPending}
+          placeholder="Add a new task ..."
+          aria-label="Task Input"
+        />
+      </div>
+      <div>
+        <Button
+          type="submit"
+          disabled={!text.trim() || isPending}
+          aria-disabled={!text.trim() || isPending}
+          aria-label="Add Task Button"
+          className="w-full sm:w-auto"
+        >
+          {isPending ? (
+            <span className="flex items-center gap-2">
+              <Loader2 className="w-4 h-4 animate-spin" />
+              Adding...
+            </span>
+          ) : (
+            "Add Task"
+          )}
+        </Button>
+      </div>
     </form>
   );
 }

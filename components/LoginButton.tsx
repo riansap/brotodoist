@@ -13,7 +13,7 @@ export default function LoginButton() {
 
   if (session?.user) {
     return (
-      <div className="flex items-center gap-3">
+      <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
         {session.user.image && (
           <Image
             src={session.user.image}
@@ -34,7 +34,7 @@ export default function LoginButton() {
   }
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
       <span className="text-sm text-muted-foreground">Not signed in</span>
       <Button
         variant="default"

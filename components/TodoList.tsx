@@ -23,7 +23,7 @@ export default function TodoList() {
   if (!session) {
     return (
       <p className="text-center text-gray-500 mt-8">
-        Please sign in to manage your tasks.
+        Please sign in to manage your tasks, Bro!
       </p>
     );
   }
@@ -32,7 +32,7 @@ export default function TodoList() {
     return (
       <div className="flex flex-col items-center mt-8">
         <Loader2 className="w-8 h-8 animate-spin text-gray-500" />
-        <p className="text-gray-500 mt-2">Loading your tasks...</p>
+        <p className="text-gray-500 mt-2">Loading your tasks ...</p>
       </div>
     );
   }
@@ -40,14 +40,14 @@ export default function TodoList() {
   if (!todos || todos.length === 0) {
     return (
       <p className="text-center text-gray-500 mt-8">
-        You have no tasks yet. Add one!
+        Its still empty, lets create one, Bro!
       </p>
     );
   }
 
   return (
     <div className="mt-4">
-      <ul>
+      <ul className="space-y-4">
         {todos.map((todo) => {
           const isUpdating = updatingId === todo.id;
           const isDeleting = deletingId === todo.id;
@@ -55,62 +55,70 @@ export default function TodoList() {
           return (
             <li
               key={todo.id}
-              className="p-4 border-b flex items-center gap-4 transition-opacity"
-              style={{ opacity: isDeleting ? 0.6 : 1 }}
+              className={`border p-4 rounded-md transition-opacity ${
+                isDeleting ? "opacity-60" : ""
+              } flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4`}
             >
-              <Checkbox
-                id={`todo-${todo.id}`}
-                checked={todo.completed}
-                onCheckedChange={(checked) => {
-                  if (!isDeleting && !isUpdating) {
-                    setUpdatingId(todo.id);
-                    updateMutation.mutate(
-                      { id: todo.id, completed: checked === true },
-                      {
-                        onSettled: () => setUpdatingId(null),
-                      }
-                    );
-                  }
-                }}
-                disabled={isUpdating || isDeleting}
-              />
-
-              <label
-                htmlFor={`todo-${todo.id}`}
-                className={`flex-grow cursor-pointer ${
-                  todo.completed ? "line-through text-gray-400" : ""
-                }`}
-              >
-                {todo.text}
-              </label>
-
-              {isUpdating ? (
-                <div className="flex items-center gap-2 text-sm text-gray-400">
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Updating...
-                </div>
-              ) : (
-                <Button
-                  variant="destructive"
-                  onClick={() => {
-                    setDeletingId(todo.id);
-                    deleteMutation.mutate(todo.id, {
-                      onSettled: () => setDeletingId(null),
-                    });
+              {/* Left: Checkbox + Text */}
+              <div className="flex items-start gap-3 flex-1 min-w-0">
+                <Checkbox
+                  id={`todo-${todo.id}`}
+                  checked={todo.completed}
+                  onCheckedChange={(checked) => {
+                    if (!isDeleting && !isUpdating) {
+                      setUpdatingId(todo.id);
+                      updateMutation.mutate(
+                        { id: todo.id, completed: checked === true },
+                        {
+                          onSettled: () => setUpdatingId(null),
+                        }
+                      );
+                    }
                   }}
-                  size="sm"
-                  disabled={isDeleting || isUpdating}
+                  disabled={isUpdating || isDeleting}
+                />
+
+                <label
+                  htmlFor={`todo-${todo.id}`}
+                  className={`text-sm leading-relaxed break-words whitespace-normal flex-1 min-w-0 ${
+                    todo.completed ? "line-through text-gray-400" : ""
+                  }`}
                 >
-                  {isDeleting ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin text-white" />
-                      <span className="text-white">Deleting...</span>
-                    </>
-                  ) : (
-                    <span className="text-white">Delete</span>
-                  )}
-                </Button>
-              )}
+                  {todo.text}
+                </label>
+              </div>
+
+              {/* Right: Delete Button or Updating */}
+              <div className="flex sm:justify-end items-center sm:items-start gap-2 sm:w-1/5 w-full">
+                {isUpdating ? (
+                  <div className="flex items-center gap-2 text-sm text-gray-400">
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Updating...
+                  </div>
+                ) : (
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    onClick={() => {
+                      setDeletingId(todo.id);
+                      deleteMutation.mutate(todo.id, {
+                        onSettled: () => setDeletingId(null),
+                      });
+                    }}
+                    disabled={isDeleting || isUpdating}
+                    className="w-full sm:w-auto"
+                  >
+                    {isDeleting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin text-white" />
+                        <span className="text-white">Deleting...</span>
+                      </>
+                    ) : (
+                      <span className="text-white">Delete</span>
+                    )}
+                  </Button>
+                )}
+              </div>
             </li>
           );
         })}
